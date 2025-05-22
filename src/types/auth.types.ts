@@ -19,3 +19,4 @@ export type PickRegister = Pick<
 >;
 export type PickLogin = Pick<TAuth, "email" | "password">;
 export type PickLogout = Pick<TAuth, "_id">;
+export type partialAuth = Partial<TAuth>;
