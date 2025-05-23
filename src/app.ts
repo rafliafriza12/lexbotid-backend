@@ -2,6 +2,7 @@ import express, { Application, Request, Response } from "express";
 import cors from "cors";
 import bodyParser from "body-parser";
 import authRouter from "./routes/AuthRouter";
+import conversationRouter from "./routes/ConversationRouter";
 
 class App {
   public app: Application;
@@ -14,12 +15,12 @@ class App {
 
   private middlewares(): void {
     this.app.use(cors({ origin: "*", optionsSuccessStatus: 200 }));
-    this.app.use(express.urlencoded({ extended: false }));
     this.app.use(bodyParser.json());
     this.app.use(express.json());
     this.app.use(express.json());
     this.app.use(express.urlencoded({ extended: true }));
     this.app.use("/api/auth", authRouter);
+    this.app.use("/api/conversation", conversationRouter);
   }
 
   private routes(): void {

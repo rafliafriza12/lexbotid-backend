@@ -2,11 +2,16 @@ import express from "express";
 import AuthController from "../controllers/AuthController";
 
 class AuthRouter {
-  public authRouter;
+  private authRouter;
+
   constructor() {
     this.authRouter = express.Router();
     this.routes();
   }
+
+  public getAuthRouter = (): express.Router => {
+    return this.authRouter;
+  };
 
   private routes() {
     this.authRouter.post("/", AuthController.register);
@@ -15,4 +20,4 @@ class AuthRouter {
   }
 }
 
-export default new AuthRouter().authRouter;
+export default new AuthRouter().getAuthRouter();

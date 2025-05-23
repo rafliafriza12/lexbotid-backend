@@ -1,17 +1,17 @@
 import mongoose, { Schema } from "mongoose";
-import { PartialConversation } from "../types/conversation.type";
+import { PartialConversation, TConversation } from "../types/conversation.type";
 
 class ConversationSchema {
-  private Conversation: mongoose.Schema<PartialConversation>;
+  private Conversation: mongoose.Schema<TConversation>;
 
   constructor() {
     this.Conversation = this.initialSchema();
   }
 
-  private initialSchema = (): mongoose.Schema<PartialConversation> => {
-    return new Schema<PartialConversation>(
+  private initialSchema = (): mongoose.Schema<TConversation> => {
+    return new Schema<TConversation>(
       {
-        topicId: {
+        userId: {
           type: String,
           required: true,
         },
@@ -52,7 +52,7 @@ class ConversationSchema {
     );
   };
 
-  public getSchema = (): mongoose.Model<PartialConversation> => {
+  public getSchema = (): mongoose.Model<TConversation> => {
     return mongoose.model("conversations", this.Conversation);
   };
 }
